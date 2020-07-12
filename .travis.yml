@@ -1,0 +1,13 @@
+---
+os: linux
+dist: bionic
+
+language: python
+python: "3.8"
+cache: pip
+install:
+  - pipenv lock --dev --requirements > /tmp/requirements.txt
+  - pip install -r /tmp/requirements.txt
+script:
+  - yamllint -c .yamllint .
+  - ansible-lint -x 403 playbooks/master.yml
