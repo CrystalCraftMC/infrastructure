@@ -18,7 +18,7 @@ Important changes to any infrastructure configurations or settings should be mad
 To synchronize the state of the CrystalCraftMC Legacy Minecraft server, run the following playbook:
 
 ```sh
-ansible-playbook --user $USER --ask-become-pass playbooks/anvil.yml
+ansible-playbook --user $USER --ask-become-pass playbooks/main.yml
 ```
 
 

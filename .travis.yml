@@ -10,4 +10,4 @@ install:
   - pip install -r /tmp/requirements.txt
 script:
   - yamllint -c .yamllint .
-  - ansible-lint -x 403 playbooks/master.yml
+  - ansible-lint -x 403 playbooks/main.yml
