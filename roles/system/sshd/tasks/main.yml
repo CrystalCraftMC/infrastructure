@@ -1,0 +1,27 @@
+---
+- name: create SSH config directories for running user (~/.ssh)
+  file:
+    state: directory
+    path: "{{ ansible_user_dir }}/.ssh"
+    mode: 0700
+    owner: "{{ ansible_user_id }}"
+    setype: ssh_home_t
+    seuser: system_u
+
+- name: add SSH public key to authorized_keys for running user (~/.ssh/authorized_keys)
+  template:
+    src: authorized_keys
+    dest: "{{ ansible_user_dir }}/.ssh/authorized_keys"
+    mode: 0400
+    owner: "{{ ansible_user_id }}"
+    setype: ssh_home_t
+    seuser: system_u
+
+- name: push /etc/ssh/sshd_config
+  template:
+    src: sshd_config
+    dest: "/etc/ssh/sshd_config"
+    mode: 0600
+    setype: etc_t
+    seuser: system_u
+  notify: restart sshd

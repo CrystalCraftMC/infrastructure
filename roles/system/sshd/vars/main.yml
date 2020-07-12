@@ -1,0 +1,15 @@
+---
+# Notes:
+#   1. Make sure allow_users is set before running this role.
+#   2. Wrap any "no" or "yes" strings in quotes so they are not reinterpreted
+#      by Ansible as True/False
+
+sshd:
+  authentication:
+    allow_users: "jwf jmw blaster"
+    authorized_keys:
+      jwf: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHr+JccK7HWKuI9GfjwuAzfeYW1en5ZdZZNxQh1bNGc/ justin@jwf.io"
+      jmw: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJLsJwv4+i5fmcSxDfCfbM1/u2tojAKJBFYpl0fRRGW jalen.wayt@gmail.com"
+      blaster: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHRtb+S630XSGV3/NqX63QA4FQA6nj0dGgy1P/hnm81M corbin.wilkins1@gmail.com"
+    password_authentication: "no"
+    permit_root_login: "no"

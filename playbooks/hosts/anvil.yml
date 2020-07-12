@@ -6,5 +6,5 @@
   roles:
     - { role: system/firewalld, tags: ['firewalld', 'system'] }
     - { role: system/selinux, tags: ['selinux', 'system'] }
-    # - { role: system/sshd, tags: ['sshd', 'system'] }
+    - { role: system/sshd, tags: ['sshd', 'system'] }
     - { role: anvil.ccmc.pw, tags: ['anvil', 'apps'] }
