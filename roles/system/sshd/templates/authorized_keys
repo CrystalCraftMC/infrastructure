@@ -1,0 +1,7 @@
+{% if ansible_user_id == "blaster" %}
+    {{ sshd.authentication.authorized_keys.blaster }}
+{% elif ansible_user_id == "jmw" %}
+    {{ sshd.authentication.authorized_keys.jmw }}
+{% elif ansible_user_id == "jwf" %}
+    {{ sshd.authentication.authorized_keys.jwf }}
+{% endif %}
