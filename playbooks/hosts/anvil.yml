@@ -1,6 +1,6 @@
 ---
-- name: synchronize Anvil
-  hosts: anvil.ccmc.pw
+- name: fire up the Anvil
+  hosts: anvil
   become: yes
 
   roles:
@@ -8,3 +8,4 @@
     - { role: system/selinux, tags: ['selinux', 'system'] }
     - { role: system/sshd, tags: ['sshd', 'system'] }
     - { role: anvil.ccmc.pw, tags: ['anvil', 'apps'] }
+    - { role: spigot, tags: ['spigot', 'minecraft'] }
