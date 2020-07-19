@@ -1,0 +1,32 @@
+---
+- name: create directory for Spigot user binaries
+  file:
+    state: directory
+    path: /usr/games/spigot
+    owner: games-admin
+    group: games
+    mode: 0775
+    seuser: system_u
+
+- name: download BuildTools
+  get_url:
+    url: https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+    dest: /usr/games/spigot/BuildTools.jar
+    backup: yes
+    force: yes
+    owner: games-admin
+    group: games-admin
+    mode: 0774
+    seuser: system_u
+
+- name: build Spigot Server JARs
+  command:
+    cmd: "java -jar BuildTools.jar --rev latest"
+    chdir: /usr/games/spigot
+
+- name: create symlink at /usr/games/spigot/spigot.jar to build artifact
+  file:
+    state: link
+    src: "/usr/games/spigot/spigot-{{ spigot.version }}.jar"
+    dest: "{{ spigot.jar_path }}"
+    seuser: system_u
