@@ -1,0 +1,9 @@
+---
+# defaults file for spigot
+- mem_usage: "4G"
+- spigot:
+    jar_path: "/usr/games/spigot/spigot.jar"
+    version: "1.15.2"
+- servers:
+    ccmc:
+      spigot_jar: "/var/games/spigot-server/spigot.jar"
