@@ -1,0 +1,8 @@
+---
+- name: install openjdk
+  package:
+    state: present
+    name:
+      - java-latest-openjdk
+      - java-latest-openjdk-devel
+      - java-latest-openjdk-headless
