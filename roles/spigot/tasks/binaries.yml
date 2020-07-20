@@ -3,7 +3,7 @@
   file:
     state: directory
     path: /usr/games/spigot
-    owner: games-admin
+    owner: spigot-admin
     group: games
     mode: 0775
     seuser: system_u
@@ -14,8 +14,8 @@
     dest: /usr/games/spigot/BuildTools.jar
     backup: yes
     force: yes
-    owner: games-admin
-    group: games-admin
+    owner: spigot-admin
+    group: spigot-admin
     mode: 0774
     seuser: system_u
 

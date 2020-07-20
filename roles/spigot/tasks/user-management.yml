@@ -1,15 +1,15 @@
 ---
-- name: create game server system user
+- name: create Spigot server system user
   user:
-    name: games-admin
-    comment: "system user to run processes for game servers - do not use"
+    name: spigot-admin
+    comment: "system user for Spigot Minecraft servers - do not use"
     create_home: no
-    home: /var/lib/games
+    home: /var/games/spigot-server
     system: yes
 
-- name: append games-admin group to admin users
+- name: append spigot-admin group to admin users
   user:
     name: "{{ item }}"
-    groups: games-admin
+    groups: spigot-admin
     append: yes
-  loop: "{{ games_admin_users }}"
+  loop: "{{ admin_uids }}"
