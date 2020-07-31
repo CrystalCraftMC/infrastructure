@@ -3,3 +3,4 @@
 - include_tasks: java.yml
 - include_tasks: user-management.yml
 - include_tasks: binaries.yml
+- include_tasks: server.yml
