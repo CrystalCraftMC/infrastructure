@@ -1,0 +1,15 @@
+[Unit]
+Description=SpigotMC Minecraft Server
+Requires=network.target
+After=multi-user.target
+
+[Service]
+Type=simple
+User={{ linux.mc_user }}
+Group={{ linux.mc_user }}
+ExecStart=+/usr/bin/java -Xms{{ linux.mem_usage }} -Xmx{{ linux.mem_usage }} -Dcom.mojang.eula.agree=true -jar {{ server_jar_path }} nogui
+Restart=on-failure
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target
