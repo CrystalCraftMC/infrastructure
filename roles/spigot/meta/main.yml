@@ -15,9 +15,9 @@ galaxy_info:
   # To view available platforms and versions (or releases), visit:
   # https://galaxy.ansible.com/api/v1/platforms/
   platforms:
-  - name: EL
-    versions:
-    - 8
+    - name: EL
+      versions:
+        - 8
 
 dependencies: []
   # List your role dependencies here, one per line. Be sure to remove the '[]' above,
