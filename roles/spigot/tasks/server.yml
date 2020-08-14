@@ -1,0 +1,43 @@
+---
+- name: create /var/games/spigot-server/ directory
+  file:
+    path: /var/games/spigot-server/
+    state: directory
+    owner: "{{ linux.mc_user }}"
+    group: "{{ linux.mc_user }}"
+    mode: 0775
+    seuser: system_u
+
+- name: copy spigot.jar_path to server_jar_path
+  copy:
+    src: "{{ spigot.jar_path }}"
+    remote_src: yes
+    dest: "{{ server_jar_path }}"
+    owner: "{{ linux.mc_user }}"
+    group: "{{ linux.mc_user }}"
+    mode: 0744
+    seuser: system_u
+    backup: yes
+
+- name: install systemd service to start, stop, and restart Spigot
+  template:
+    src: spigot.service
+    dest: "/etc/systemd/system/spigot-server.service"
+    mode: 0644
+    setype: systemd_unit_file_t
+    seuser: system_u
+
+- name: open Minecraft server ports in firewall
+  firewalld:
+    port: "25565/{{ item }}"
+    state: enabled
+    permanent: yes
+  loop:
+    - tcp
+    - udp
+
+- name: start/enable Spigot Server service
+  service:
+    name: spigot-server.service
+    state: restarted
+    enabled: yes
