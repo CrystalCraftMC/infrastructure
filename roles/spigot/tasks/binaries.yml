@@ -3,7 +3,7 @@
   file:
     state: directory
     path: /usr/games/spigot
-    owner: spigot-admin
+    owner: "{{ linux.mc_user }}"
     group: games
     mode: 0775
     seuser: system_u
@@ -14,15 +14,16 @@
     dest: /usr/games/spigot/BuildTools.jar
     backup: yes
     force: yes
-    owner: spigot-admin
-    group: spigot-admin
+    owner: "{{ linux.mc_user }}"
+    group: "{{ linux.mc_user }}"
     mode: 0774
     seuser: system_u
 
 - name: build Spigot Server JARs
   command:
-    cmd: "java -jar BuildTools.jar --rev latest"
+    cmd: "java -jar BuildTools.jar --rev {{ spigot.version }}"
     chdir: /usr/games/spigot
+    creates: "/usr/games/spigot/spigot-{{ spigot.version }}.jar"
 
 - name: create symlink at /usr/games/spigot/spigot.jar to build artifact
   file:
