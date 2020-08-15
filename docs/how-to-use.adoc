@@ -1,0 +1,27 @@
+= How to use CrystalCraftMC/infrastructure
+
+[link=https://creativecommons.org/licenses/by-sa/4.0/]
+image::https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg[License: CC BY-SA 4.0]
+
+This doc explains how `CrystalCraftMC/infrastructure` is used in practice.
+It provides a baseline for how upstream uses this repo daily.
+
+
+== Support matrix
+
+The following distributions are currently "supported" (i.e. used) upstream:
+
+* *Fedora*:
+  Any support release
+* *CentOS/RHEL*:
+  8.0+
+
+
+== Frequently used commands
+
+These are the quick commands to use for day-to-day management of the Spigot server.
+
+[source,bash]
+----
+ansible-playbook --user $USER --ask-become-pass --verbose playbooks/main.yml
+----

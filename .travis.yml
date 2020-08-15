@@ -2,12 +2,43 @@
 os: linux
 dist: bionic
 
-language: python
-python: "3.8"
-cache: pip
-install:
-  - pipenv lock --dev --requirements > /tmp/requirements.txt
-  - pip install -r /tmp/requirements.txt
-script:
-  - yamllint -c .yamllint .
-  - ansible-lint -x 403 playbooks/main.yml
+jobs:
+  include:
+
+    - language: python
+      python: 3.8
+      cache: pip
+      install:
+        - pipenv lock --dev --requirements > /tmp/requirements.txt
+        - pip install -r /tmp/requirements.txt
+      script:
+        - yamllint -c .yamllint .
+        - ansible-lint -x 305,401,403 playbooks/main.yml
+
+    - language: ruby
+      rvm: 2.7
+      cache:
+        bundler: true
+        directories:
+          - "$TRAVIS_BUILD_DIR/tmp/.htmlproofer"
+      script:
+        - bundle exec sh gen_docs.sh
+        - bundle exec rake test
+      deploy:
+        local_dir: docs/_build
+        provider: pages
+        skip_cleanup: true
+        target_branch: gh-pages
+        token: "$GITHUB_TOKEN"
+        on:
+          branch: master
+
+notifications:
+  email:
+    - corbin.wilkins1@gmail.com
+    - nbhall0114@gmail.com
+    - walkietalkie0087@gmail.com
+
+env:
+  global:
+    secure: oSl4EbQ7JfcnDPUEQJFTETHGq3MtRnZ398NuOBBiZmttVPiuBjie3imiqHt1J0j1LwJVtW/tn/l7siITxntTctVOCh8oTg1uIpcldpXtR0HsDX/Wuo03Eeo+yLCwcI5zII//48kx5e5NlXRDzxdnNiF++th/3mVI+0b4KRF3jJ9TnF4yJvcn4Rc8zGrfyzav3sUM4OgFJafYCn7BBtOGcLh13eWio+glMPWj1lwGBIc1qzuS4z7/usYuoMzsYLVu72YtZDrqREVH5uClA5/S3a8noTwQkexduk/T8eu4/1dr/vAmdB7CngSIQg1xPQCYITfSbBkIDJt/ELPZsDw6nCA2i4FzE6MKMtF3N8AwchYd8hCGQBIp5q8u3FsNCy4WBRMN5aFzxokc7RwiZqU6huFjzV6tL2SkJTNoDsyhp/+tR92k5hUgvp/Y7hXLJrJZF4ir1XVzH6aa3wu81eAZ2qCP00MQ5//envegY30Tk5+lV5bvnZj160ORyj0k4NCd5sEIl4UtobLSplzigWvTzzRPSxEQn/4VXkoYrTszA2pYAIqDmX8B14WQUt7u976KXBnQCHcicSBwepjrvlOLqLZg/sT3zdhHDMSVdZmuqv9l6m/UFhUqmdJOCHRbNmGzyF67ExG30vGXwaTSJMUoPPLNFtbIT+6nosUIYHZxntk=
