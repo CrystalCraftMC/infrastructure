@@ -1,18 +1,18 @@
 ---
-- name: create /var/games/spigot-server/ directory
+- name: create spigot-server directory
   file:
-    path: /var/games/spigot-server/
+    path: "{{ server_path }}"
     state: directory
     owner: "{{ linux.mc_user }}"
     group: "{{ linux.mc_user }}"
     mode: 0775
     seuser: system_u
 
-- name: copy spigot.jar_path to server_jar_path
+- name: copy spigot.jar_path to server_path
   copy:
     src: "{{ spigot.jar_path }}"
     remote_src: yes
-    dest: "{{ server_jar_path }}"
+    dest: "{{ server_path }}/spigot.jar"
     owner: "{{ linux.mc_user }}"
     group: "{{ linux.mc_user }}"
     mode: 0744
