@@ -6,4 +6,4 @@ linux:
 spigot:
   jar_path: "/usr/games/spigot/spigot.jar"
   version: "1.16.2"
-server_jar_path: "/var/games/spigot-server/spigot.jar"
+server_path: "/var/games/spigot-server"

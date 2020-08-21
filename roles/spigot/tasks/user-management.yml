@@ -4,7 +4,7 @@
     name: "{{ linux.mc_user }}"
     comment: "system user for Spigot Minecraft servers - do not use"
     create_home: no
-    home: /var/games/spigot-server
+    home: "{{ server_path }}"
     system: yes
 
 - name: append spigot-admin group to admin users
