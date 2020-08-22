@@ -7,7 +7,8 @@ After=multi-user.target
 Type=simple
 User={{ linux.mc_user }}
 Group={{ linux.mc_user }}
-ExecStart=+/usr/bin/java -Xms{{ linux.mem_usage }} -Xmx{{ linux.mem_usage }} -Dcom.mojang.eula.agree=true -jar {{ server_jar_path }} nogui
+WorkingDirectory={{ server_path }}
+ExecStart=+/usr/bin/java -Xms{{ linux.mem_usage }} -Xmx{{ linux.mem_usage }} -Dcom.mojang.eula.agree=true -jar spigot.jar nogui
 Restart=on-failure
 RestartSec=15
 
