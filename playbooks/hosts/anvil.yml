@@ -7,5 +7,6 @@
     - { role: system/firewalld, tags: ['firewalld', 'system'] }
     - { role: system/selinux, tags: ['selinux', 'system'] }
     - { role: system/sshd, tags: ['sshd', 'system'] }
+    - { role: system/user-management, tags: ['users', 'user-management', 'system'] }
     - { role: anvil.ccmc.pw, tags: ['anvil', 'apps'] }
-    - { role: spigot, tags: ['spigot', 'minecraft'] }
+    - { role: spigot, tags: ['spigot', 'minecraft', 'apps'] }
