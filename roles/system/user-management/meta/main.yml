@@ -1,0 +1,26 @@
+galaxy_info:
+  role_name: system/user-management
+  author: Justin W. Flory and CrystalCraftMC Community
+  description: User management and privilege-escalation configuration for a Spigot game server.
+  company: CrystalCraftMC
+  license: BSD-2-Clause
+  min_ansible_version: 2.9
+  galaxy_tags:
+    - linux
+    - sudo
+    - permissions
+    - minecraft
+    - spigot
+    - spigotmc
+    - gaming
+
+  # Provide a list of supported platforms, and for each platform a list of versions.
+  # To view available platforms and versions (or releases), visit:
+  # https://galaxy.ansible.com/api/v1/platforms/
+  platforms:
+    - name: EL
+      versions:
+        - 8
+
+  dependencies:
+    - spigot
