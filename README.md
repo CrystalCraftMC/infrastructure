@@ -2,7 +2,7 @@ CrystalCraftMC Infrastructure
 =============================
 
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
-[![Build Status](https://travis-ci.org/CrystalCraftMC/infrastructure.svg?branch=master)](https://travis-ci.org/CrystalCraftMC/infrastructure)
+[![Build Status](https://travis-ci.org/CrystalCraftMC/infrastructure.svg?branch=main)](https://travis-ci.org/CrystalCraftMC/infrastructure)
 
 Set of scripts, Ansible playbooks/roles, and other tools to automate and manage CrystalCraftMC infrastructure
 
@@ -41,7 +41,7 @@ Provided you meet the following terms:
   You must give appropriate credit, provide a link to the license, and indicate if changes were made.
   You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
 * **Include license**:
-  Include a full copy of the [BSD 2-Clause License text](https://github.com/CrystalCraftMC/infrastructure/blob/master/LICENSE.txt) in modified software attributions.
+  Include a full copy of the [BSD 2-Clause License text](https://github.com/CrystalCraftMC/infrastructure/blob/main/LICENSE.txt) in modified software attributions.
 
 ### Attributions
 
