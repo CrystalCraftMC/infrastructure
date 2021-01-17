@@ -16,6 +16,20 @@ Role Variables
 --------------
 
 This role uses the inherited variable `{{ admin_uids }}` to create the user accounts for the admin users, if they do not already exist.
+Lists of strings are used to elevate users to use privileged commands.
+`privileged.full_sudo` adds listed users to the `wheel` group, while `privileged.jr_sysadmins` adds users to the `spigot-admin` group.
+
+```yaml
+---
+privileged:
+  full_sudo:
+	- blaster
+	- jmw
+	- jwf
+  jr_sysadmins:
+  	- dinnerbone
+	- echophox
+```
 
 
 Dependencies

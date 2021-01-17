@@ -1,4 +1,12 @@
 ---
+- name: create Spigot server system user
+  user:
+    name: "{{ linux.mc_user }}"
+    comment: "system user for Spigot Minecraft servers - do not use"
+    create_home: no
+    home: "{{ server_path }}"
+    system: yes
+
 - name: create directory for Spigot user binaries
   file:
     state: directory

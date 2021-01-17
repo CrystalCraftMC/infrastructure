@@ -1,15 +1,2 @@
 ---
-- name: create Spigot server system user
-  user:
-    name: "{{ linux.mc_user }}"
-    comment: "system user for Spigot Minecraft servers - do not use"
-    create_home: no
-    home: "{{ server_path }}"
-    system: yes
 
-- name: append spigot-admin group to admin users
-  user:
-    name: "{{ item }}"
-    groups: "{{ linux.mc_user }}"
-    append: yes
-  loop: "{{ admin_uids }}"

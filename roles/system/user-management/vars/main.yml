@@ -1,0 +1,7 @@
+---
+privileged:
+  full_sudo:
+    - blaster
+    - jmw
+    - jwf
+  jr_sysadmins: []

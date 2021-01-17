@@ -4,7 +4,3 @@ all:
   hosts:
     anvil:
       ansible_host: anvil.ccmc.pw
-      admin_uids:
-        - blaster
-        - jmw
-        - jwf
