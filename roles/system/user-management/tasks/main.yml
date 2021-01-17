@@ -1,10 +1,22 @@
 ---
 # tasks file for user-management
-- name: verify all admin UIDs exist and use a bash shell
+- name: append full_sudo users to spigot-admin and wheel groups and set Bash shell
   user:
     name: "{{ item }}"
     shell: /usr/bin/bash
-  loop: "{{ admin_uids }}"
+    append: yes
+    groups:
+      - spigot-admin
+      - wheel
+  loop: "{{ privileged.full_sudo }}"
+
+# Uncomment once real usernames are added to roles/system/user-management/vars/main.yml
+#- name: append jr_sysadmins users to spigot-admin group
+#  user:
+#    name: "{{ item }}"
+#    groups: spigot-admin
+#    append: yes
+#  loop: "{{ privileged.jr_sysadmins }}"
 
 - name: install custom sudoers.d file for %spigot-admins to administer system
   copy:

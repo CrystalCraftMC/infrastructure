@@ -1,23 +1,27 @@
-## Command Aliases
-## These are groups of related commands...
-
 ## Networking
-Cmnd_Alias NETWORKING = /usr/sbin/route, /usr/sbin/ifconfig, /usr/sbin/ip, /usr/bin/ping, /usr/sbin/dhclient, /usr/bin/firewall-cmd, /usr/sbin/mii-tool
+Cmnd_Alias NETWORKING = \
+	/usr/bin/firewall-cmd
 
 ## Installation and management of software
-Cmnd_Alias SOFTWARE = /usr/bin/dnf
+Cmnd_Alias PACKAGES = \
+	/usr/bin/dnf
+
+## System journals
+Cmnd_Alias JOURNALS = \
+	/usr/bin/journalctl * spigot-server.service
 
 ## Services
-Cmnd_Alias SERVICES = /usr/bin/systemctl start, /usr/bin/systemctl stop, /usr/bin/systemctl reload, /usr/bin/systemctl restart, /usr/bin/systemctl status, /usr/bin/systemctl enable, /usr/bin/systemctl disable, /usr/bin/systemctl daemon-reload
-
-## Storage
-Cmnd_Alias STORAGE = /usr/sbin/fdisk, /usr/sbin/sfdisk, /usr/sbin/parted, /usr/sbin/partprobe, /usr/bin/mount, /usr/bin/umount
-
-## Delegating permissions
-Cmnd_Alias DELEGATING = /usr/bin/chown, /usr/bin/chmod, /usr/bin/chgrp
+Cmnd_Alias SERVICES = \
+	/usr/bin/systemctl start	spigot-server.service, \
+	/usr/bin/systemctl stop 	spigot-server.service, \
+	/usr/bin/systemctl reload 	spigot-server.service, \
+	/usr/bin/systemctl restart 	spigot-server.service
 
 ## Processes
-Cmnd_Alias PROCESSES = /usr/bin/nice, /usr/bin/kill, /usr/bin/killall
+Cmnd_Alias PROCESSES = \
+	/usr/bin/nice, \
+	/usr/bin/kill, \
+	/usr/bin/killall
 
 ## Allows members of the 'spigot-admin' group to run all above command alias groups.
-%spigot-admin	ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES
+%spigot-admin	ALL = NETWORKING, PACKAGES, JOURNALS, SERVICES, PROCESSES
