@@ -5,5 +5,5 @@ linux:
   mem_usage: "4G"
 spigot:
   jar_path: "/usr/games/spigot/spigot.jar"
-  version: "1.16.4"
+  version: "1.16.5"
 server_path: "/var/games/spigot-server"
